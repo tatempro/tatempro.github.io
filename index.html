@@ -1,1 +1,1060 @@
-"Hello World" 
+<!DOCTYPE html>
+
+<!DOCTYPE html>
+
+<html lang="en">
+  <head>
+    <title>WC Survey</title>
+    <!-- <link
+      rel="stylesheet"
+      href="C:\Users\tatemt\Desktop\WC Survey\V2\css\main.css"
+    /> -->
+    <style>
+      /************************************************************************
+    General Adjustments
+************************************************************************/
+      * {
+        margin: 0;
+        padding: 0;
+        font-family: Calibri, Arial, Helvetica, sans-serif;
+      }
+
+      html {
+        height: 100%;
+        background-color: RGB(248, 248, 248);
+      }
+
+      body {
+        height: 100%;
+        background-color: RGB(248, 248, 248);
+      }
+
+      /************************************************************************
+    Main Body Structure
+************************************************************************/
+      #screen {
+        height: 100%;
+        display: flex;
+        flex-direction: column;
+        justify-content: space-between;
+        background-color: RGB(248, 248, 248);
+        background-image: linear-gradient(
+          RGB(228, 228, 228),
+          RGB(248, 248, 248)
+        );
+      }
+
+      /* Top Bar **************************/
+      #topBar {
+        order: 1;
+        display: flex;
+        height: 88px;
+        align-items: center;
+        padding: 0px 40px;
+        background-color: RGB(0, 96, 168);
+        background-image: linear-gradient(
+          to right,
+          RGB(0, 96, 168),
+          RGB(20, 116, 188)
+        );
+      }
+
+      #topBar img {
+        order: 1;
+        height: 62px;
+      }
+
+      @media (max-width: 600px) {
+        #topBar {
+          height: 59px;
+        }
+      }
+
+      #content {
+        order: 2;
+        display: flex;
+        flex-grow: 1;
+        flex-direction: column;
+        min-height: 200px;
+      }
+
+      /* Bottom Bar **************************/
+      #bottomBar {
+        order: 3;
+        display: flex;
+        height: 134px;
+        background-color: RGB(242, 105, 36);
+        background-image: linear-gradient(
+          to right,
+          RGB(242, 105, 36),
+          RGB(255, 125, 56)
+        );
+      }
+
+      @media (max-width: 600px) {
+        #bottomBar {
+          height: 45px;
+        }
+      }
+
+      /************************************************************************
+    Structure inside #content Div
+************************************************************************/
+      #progressContainer {
+        order: 1;
+        display: flex;
+        justify-content: center;
+        background-color: RGB(248, 248, 248);
+        background-image: linear-gradient(
+          RGB(228, 228, 228),
+          RGB(248, 248, 248)
+        );
+        margin-bottom: 10px;
+      }
+
+      #messageContainer {
+        order: 2;
+        display: flex;
+        justify-content: center;
+        margin-bottom: 10px 0;
+      }
+
+      #formContainer {
+        order: 3;
+        display: flex;
+        justify-content: center;
+        margin-bottom: 10px;
+        overflow: auto;
+      }
+
+      #questionContainer {
+        order: 4;
+        display: flex;
+        justify-content: center;
+        overflow: auto;
+        max-height: calc(100% - 2em - 20px);
+      }
+
+      #buttonContainer {
+        order: 5;
+        display: flex;
+        justify-content: center;
+        margin-bottom: 10px;
+      }
+
+      /************************************************************************
+    Progress Bar
+************************************************************************/
+      #progressBarBackground {
+        min-width: 400px;
+        width: 40%;
+        height: 20px;
+        padding: 1px 2px;
+        margin: 10px 0px;
+        text-align: center;
+        border-radius: 12px;
+        border: 1px solid RGB(200, 200, 200);
+        background-color: RGB(248, 248, 248);
+      }
+
+      #progressBar {
+        margin-top: 1px;
+        background-color: RGB(242, 105, 36);
+        background-image: linear-gradient(
+          to right,
+          RGB(242, 105, 36),
+          RGB(255, 125, 56)
+        );
+        border-radius: 10px;
+        min-width: 20px;
+      }
+
+      /************************************************************************
+    Questions
+************************************************************************/
+      #questionGroup {
+        display: flex;
+        min-width: 800px;
+        width: 60%;
+        padding: 10px 30px;
+        margin: 10px 0px;
+        background-color: RGB(248, 248, 248);
+        border: 1px solid RGB(200, 200, 200);
+        overflow: auto;
+        flex-direction: column;
+      }
+
+      .question {
+        font-size: 1.25em;
+        margin-bottom: 10px;
+      }
+
+      .questionAndAnswer {
+        display: flex;
+        flex-direction: column;
+        border-bottom: 1px solid RGB(100, 100, 100);
+        padding-bottom: 25px;
+        margin-bottom: 25px;
+      }
+
+      /************************************************************************
+    Answers
+************************************************************************/
+      .answer {
+        font-size: 1.1em;
+        -ms-user-select: none;
+        user-select: none;
+      }
+
+      /* Multiple Choice **************************/
+      .multipleChoice {
+        display: flex;
+        flex-wrap: wrap;
+        justify-content: space-between;
+        flex-direction: column;
+      }
+
+      .multipleChoice label {
+        display: flex;
+        margin: 10px 30px;
+        padding: 10px 30px;
+        width: 50%;
+        min-width: 150px;
+        border: 1px solid RGB(200, 200, 200);
+      }
+
+      .multipleChoice input[type="radio"] {
+        opacity: 0;
+        position: fixed;
+        width: 0;
+      }
+
+      .multipleChoice input[type="radio"]:checked + label {
+        display: flex;
+        background-color: RGB(236, 240, 246);
+        border-color: RGB(2, 72, 196);
+      }
+
+      /* Ranking (Similar to mult-choice) **************************/
+      .ranking {
+        display: flex;
+        justify-content: center;
+      }
+
+      .ranking label {
+        padding: 10px 30px;
+        border: 1px solid RGB(200, 200, 200);
+        flex-basis: 20%;
+        text-align: center;
+      }
+
+      .ranking input[type="radio"] {
+        opacity: 0;
+        position: fixed;
+        width: 0;
+      }
+
+      .ranking input[type="radio"]:checked + label {
+        background-color: RGB(236, 240, 246);
+        border-color: RGB(2, 72, 196);
+      }
+
+      /* Mass Ranking **************************/
+      .massRanking {
+        padding: 10px;
+        margin: 10px;
+        border: 1px solid RGB(200, 200, 200);
+      }
+
+      .massRankingItem {
+        font-size: 1em;
+      }
+
+      .massRankingSelectionList {
+        display: flex;
+        margin-bottom: 10px;
+      }
+
+      .massRankingSelectionList label {
+        padding: 10px 10px;
+        border: 1px solid RGB(200, 200, 200);
+        flex-basis: 10%;
+        text-align: center;
+      }
+
+      .massRankingSelectionList input[type="radio"] {
+        opacity: 0;
+        position: fixed;
+        width: 0;
+      }
+
+      .massRankingSelectionList input[type="radio"]:checked + label {
+        background-color: RGB(236, 240, 246);
+        border-color: RGB(2, 72, 196);
+      }
+
+      /* Mass Ranking **************************/
+      .userInput {
+      }
+
+      .userInput input[type="text"] {
+        padding-left: 5px;
+        border: 1px solid RGB(200, 200, 200);
+        border-radius: 5px;
+        font-size: 1em;
+      }
+
+      /************************************************************************
+    Buttons (Next / Previous)
+************************************************************************/
+      .button {
+        font-size: 2em;
+        border: 2px solid RGB(2, 72, 196);
+        color: RGB(2, 72, 196);
+        background-color: RGB(248, 248, 248);
+        border-radius: 100%;
+        padding: 0 10px;
+        margin: 0px 10px;
+      }
+
+      /*  .button a {
+        text-decoration: none;
+        border-radius: 100%;
+        background-color: RGB(248, 248, 248);
+        padding: 0px 10px;
+        color: RGB(2, 72, 196);
+    }
+
+        .button a:hover {
+            background-color: RGB(250, 243, 222);
+        }*/
+
+      /************************************************************************
+    Misc.
+************************************************************************/
+      .separated {
+        display: flex;
+        justify-content: space-between;
+      }
+
+      .bb-grey {
+        border-bottom: 1px solid RGB(200, 200, 200);
+      }
+
+      .mb-2 {
+        margin-bottom: 2px;
+      }
+
+      .buttonTest,
+      .buttonTest img {
+        width: 100px;
+        height: 100px;
+        border-radius: 100px;
+        border: none;
+      }
+
+      .buttonTest {
+        position: relative;
+        background-color: rgb(255, 255, 255);
+        margin: 0 10px;
+      }
+
+      .buttonTest img {
+        position: absolute;
+        top: 0;
+        left: 0;
+      }
+    </style>
+  </head>
+  <body>
+    <div id="screen">
+      <div id="topBar">
+        <img src="C:\Users\tatemt\Desktop\WC Survey\V2\img\wc_logo.png" />
+      </div>
+      <div id="content">
+        <div id="progressContainer">
+          <div id="progressBarBackground">
+            <div id="progressBar" style="width: 0%">&nbsp;</div>
+          </div>
+        </div>
+        <div id="messageContainer"></div>
+        <div id="formContainer">
+          <form action="/customer/2" method="post">
+            <div id="questionContainer">
+              <div id="questionGroup">
+                <div class="questionAndAnswer">
+                  <div class="question">
+                    What was the Employee Number on your receipt
+                  </div>
+
+                  <div class="answer userInput">
+                    <input
+                      onchange="handleChange(this)"
+                      type="number"
+                      id="Questions_0__CompletedAnswer"
+                      name="Questions[0].CompletedAnswer"
+                      value=""
+                    />
+                  </div>
+                </div>
+                <div class="questionAndAnswer">
+                  <div class="question">
+                    Please enter the Sale # found on the bottom of your receipt
+                    (located above the date and time) of your visit.
+                  </div>
+
+                  <div class="answer userInput">
+                    <input
+                      onchange="handleChange(this)"
+                      type="number"
+                      id="Questions_1__CompletedAnswer"
+                      name="Questions[1].CompletedAnswer"
+                      value=""
+                    />
+                  </div>
+                </div>
+                <div class="questionAndAnswer">
+                  <div class="question">
+                    Based on a scale of 1-5, how satisfied were you with the
+                    friendliness of our Team Members?
+                  </div>
+
+                  <div class="separated">
+                    <span style="width: 20%; text-align: center"
+                      >Extremeley Dissatisfied</span
+                    >
+                    <span style="width: 20%; text-align: center"
+                      >Extremely Satisfied</span
+                    >
+                  </div>
+                  <div class="answer ranking">
+                    <input
+                      onchange="handleChange(this)"
+                      id="radio_2_0"
+                      type="radio"
+                      value="Extremeley Dissatisfied"
+                      name="Questions[2].CompletedAnswer"
+                    />
+                    <label for="radio_2_0">1</label>
+                    <input
+                      onchange="handleChange(this)"
+                      id="radio_2_1"
+                      type="radio"
+                      value="Somewhat Dissatisfied"
+                      name="Questions[2].CompletedAnswer"
+                    />
+                    <label for="radio_2_1">2</label>
+                    <input
+                      onchange="handleChange(this)"
+                      id="radio_2_2"
+                      type="radio"
+                      value="Neutral"
+                      name="Questions[2].CompletedAnswer"
+                    />
+                    <label for="radio_2_2">3</label>
+                    <input
+                      onchange="handleChange(this)"
+                      id="radio_2_3"
+                      type="radio"
+                      value="Somewhat Satisfied"
+                      name="Questions[2].CompletedAnswer"
+                    />
+                    <label for="radio_2_3">4</label>
+                    <input
+                      onchange="handleChange(this)"
+                      id="radio_2_4"
+                      type="radio"
+                      value="Extremely Satisfied"
+                      name="Questions[2].CompletedAnswer"
+                    />
+                    <label for="radio_2_4">5</label>
+                  </div>
+                </div>
+                <div class="questionAndAnswer">
+                  <div class="question">
+                    Based on a scale of 1-5, how likely are you to return?
+                  </div>
+
+                  <div class="separated">
+                    <span style="width: 20%; text-align: center"
+                      >Extremely Unlikely</span
+                    >
+                    <span style="width: 20%; text-align: center"
+                      >Extremely Likely</span
+                    >
+                  </div>
+                  <div class="answer ranking">
+                    <input
+                      onchange="handleChange(this)"
+                      id="radio_3_0"
+                      type="radio"
+                      value="Extremely Unlikely"
+                      name="Questions[3].CompletedAnswer"
+                    />
+                    <label for="radio_3_0">1</label>
+                    <input
+                      onchange="handleChange(this)"
+                      id="radio_3_1"
+                      type="radio"
+                      value="Somewhat Unlikely"
+                      name="Questions[3].CompletedAnswer"
+                    />
+                    <label for="radio_3_1">2</label>
+                    <input
+                      onchange="handleChange(this)"
+                      id="radio_3_2"
+                      type="radio"
+                      value="Neither Likely nor Unlikely"
+                      name="Questions[3].CompletedAnswer"
+                    />
+                    <label for="radio_3_2">3</label>
+                    <input
+                      onchange="handleChange(this)"
+                      id="radio_3_3"
+                      type="radio"
+                      value="Somewhat Likely"
+                      name="Questions[3].CompletedAnswer"
+                    />
+                    <label for="radio_3_3">4</label>
+                    <input
+                      onchange="handleChange(this)"
+                      id="radio_3_4"
+                      type="radio"
+                      value="Extremely Likely"
+                      name="Questions[3].CompletedAnswer"
+                    />
+                    <label for="radio_3_4">5</label>
+                  </div>
+                </div>
+                <div class="questionAndAnswer">
+                  <div class="question">
+                    Based on a scale of 1-5, how likely are you to recommend
+                    White Castle to others?
+                  </div>
+
+                  <div class="separated">
+                    <span style="width: 20%; text-align: center"
+                      >Extremely Unlikely</span
+                    >
+                    <span style="width: 20%; text-align: center"
+                      >Extremely Likely</span
+                    >
+                  </div>
+                  <div class="answer ranking">
+                    <input
+                      onchange="handleChange(this)"
+                      id="radio_4_0"
+                      type="radio"
+                      value="Extremely Unlikely"
+                      name="Questions[4].CompletedAnswer"
+                    />
+                    <label for="radio_4_0">1</label>
+                    <input
+                      onchange="handleChange(this)"
+                      id="radio_4_1"
+                      type="radio"
+                      value="Somewhat Unlikely"
+                      name="Questions[4].CompletedAnswer"
+                    />
+                    <label for="radio_4_1">2</label>
+                    <input
+                      onchange="handleChange(this)"
+                      id="radio_4_2"
+                      type="radio"
+                      value="Neither Likely nor Unlikely"
+                      name="Questions[4].CompletedAnswer"
+                    />
+                    <label for="radio_4_2">3</label>
+                    <input
+                      onchange="handleChange(this)"
+                      id="radio_4_3"
+                      type="radio"
+                      value="Somewhat Likely"
+                      name="Questions[4].CompletedAnswer"
+                    />
+                    <label for="radio_4_3">4</label>
+                    <input
+                      onchange="handleChange(this)"
+                      id="radio_4_4"
+                      type="radio"
+                      value="Extremely Likely"
+                      name="Questions[4].CompletedAnswer"
+                    />
+                    <label for="radio_4_4">5</label>
+                  </div>
+                </div>
+                <div class="questionAndAnswer">
+                  <div class="question">
+                    Based on a scale of 1-5, how satisfied were you with the
+                    level of customer service provided by our Team Members?
+                  </div>
+
+                  <div class="separated">
+                    <span style="width: 20%; text-align: center"
+                      >Extremely Dissatisfied</span
+                    >
+                    <span style="width: 20%; text-align: center"
+                      >Extremely Satisfied</span
+                    >
+                  </div>
+                  <div class="answer ranking">
+                    <input
+                      onchange="handleChange(this)"
+                      id="radio_5_0"
+                      type="radio"
+                      value="Extremely Dissatisfied"
+                      name="Questions[5].CompletedAnswer"
+                    />
+                    <label for="radio_5_0">1</label>
+                    <input
+                      onchange="handleChange(this)"
+                      id="radio_5_1"
+                      type="radio"
+                      value="Somewhat Dissatisfied"
+                      name="Questions[5].CompletedAnswer"
+                    />
+                    <label for="radio_5_1">2</label>
+                    <input
+                      onchange="handleChange(this)"
+                      id="radio_5_2"
+                      type="radio"
+                      value="Neutral"
+                      name="Questions[5].CompletedAnswer"
+                    />
+                    <label for="radio_5_2">3</label>
+                    <input
+                      onchange="handleChange(this)"
+                      id="radio_5_3"
+                      type="radio"
+                      value="Somewhat Satisfied"
+                      name="Questions[5].CompletedAnswer"
+                    />
+                    <label for="radio_5_3">4</label>
+                    <input
+                      onchange="handleChange(this)"
+                      id="radio_5_4"
+                      type="radio"
+                      value="Extremely Satisfied"
+                      name="Questions[5].CompletedAnswer"
+                    />
+                    <label for="radio_5_4">5</label>
+                  </div>
+                </div>
+                <div class="questionAndAnswer">
+                  <div class="question">
+                    Based on a scale of 1-5, how knowledgeable were our Team
+                    Members of the menu?
+                  </div>
+
+                  <div class="separated">
+                    <span style="width: 20%; text-align: center"
+                      >Highly Unknowledgeable</span
+                    >
+                    <span style="width: 20%; text-align: center"
+                      >Highly Knowledgeable</span
+                    >
+                  </div>
+                  <div class="answer ranking">
+                    <input
+                      onchange="handleChange(this)"
+                      id="radio_6_0"
+                      type="radio"
+                      value="Highly Unknowledgeable"
+                      name="Questions[6].CompletedAnswer"
+                    />
+                    <label for="radio_6_0">1</label>
+                    <input
+                      onchange="handleChange(this)"
+                      id="radio_6_1"
+                      type="radio"
+                      value="Somewhat Unknowledgeable"
+                      name="Questions[6].CompletedAnswer"
+                    />
+                    <label for="radio_6_1">2</label>
+                    <input
+                      onchange="handleChange(this)"
+                      id="radio_6_2"
+                      type="radio"
+                      value="Neither Knowledgeable Nor Unknowledgeable"
+                      name="Questions[6].CompletedAnswer"
+                    />
+                    <label for="radio_6_2">3</label>
+                    <input
+                      onchange="handleChange(this)"
+                      id="radio_6_3"
+                      type="radio"
+                      value="Somewhat Knowledgeable"
+                      name="Questions[6].CompletedAnswer"
+                    />
+                    <label for="radio_6_3">4</label>
+                    <input
+                      onchange="handleChange(this)"
+                      id="radio_6_4"
+                      type="radio"
+                      value="Highly Knowledgeable"
+                      name="Questions[6].CompletedAnswer"
+                    />
+                    <label for="radio_6_4">5</label>
+                  </div>
+                </div>
+              </div>
+            </div>
+            <div id="buttonContainer">
+              <button
+                type="submit"
+                name="SelectedPageNumber"
+                class="buttonTest"
+                value="1"
+              >
+                <img src="/img/previous.svg" />
+              </button>
+
+              <button
+                type="submit"
+                name="SelectedPageNumber"
+                class="buttonTest"
+                value="3"
+              >
+                <img src="/img/next.svg" />
+              </button>
+            </div>
+            <input
+              name="__RequestVerificationToken"
+              type="hidden"
+              value="CfDJ8JDwHRpRRxdOn-59K3_fjwtmp1VWv2a9OsaQBlSKCIxSjVE8rDp8zAiA7JAmQtfjwPF7_jtRtxa8MO2SE0SX0K9sEkiiccFWv42kOlGAb6dyOuadxlpOV-Shc-MLBR_qfg0Bsfyr3vElLpMWoOqJ-ak"
+            />
+          </form>
+        </div>
+
+        <script>
+          function handleChange(myRadio) {
+            var json = {
+              questions: [
+                {
+                  question_ID: 6430,
+                  questionNumText: "4",
+                  wcQuestionName:
+                    "What was the Employee Number on your receipt",
+                  questionText: "What was the Employee Number on your receipt",
+                  questionType: "OpenEnded_Integer",
+                  answers: [
+                    {
+                      answer_ID: "130928",
+                      answerValue: "OPEN ENDED",
+                      answerCode: "0",
+                      completedAnswer: null,
+                      completedActualAnswer: null,
+                    },
+                  ],
+                  completedAnswer: null,
+                },
+                {
+                  question_ID: 6431,
+                  questionNumText: "5",
+                  wcQuestionName:
+                    "Please enter the Sale # found on the bottom of your receipt (located above the date and time) of your visit.",
+                  questionText:
+                    "Please enter the Sale # found on the bottom of your receipt (located above the date and time) of your visit.",
+                  questionType: "OpenEnded_Integer",
+                  answers: [
+                    {
+                      answer_ID: "130929",
+                      answerValue: "OPEN ENDED",
+                      answerCode: "0",
+                      completedAnswer: null,
+                      completedActualAnswer: null,
+                    },
+                  ],
+                  completedAnswer: null,
+                },
+                {
+                  question_ID: 6436,
+                  questionNumText: "10",
+                  wcQuestionName:
+                    "Based on a scale of 1-5, how satisfied were you with the friendliness of our Team Members?",
+                  questionText:
+                    "Based on a scale of 1-5, how satisfied were you with the friendliness of our Team Members?",
+                  questionType: "MultipleChoice_Ranking",
+                  answers: [
+                    {
+                      answer_ID: "130945",
+                      answerValue: "Extremeley Dissatisfied",
+                      answerCode: "1",
+                      completedAnswer: null,
+                      completedActualAnswer: null,
+                    },
+                    {
+                      answer_ID: "130944",
+                      answerValue: "Somewhat Dissatisfied",
+                      answerCode: "2",
+                      completedAnswer: null,
+                      completedActualAnswer: null,
+                    },
+                    {
+                      answer_ID: "130943",
+                      answerValue: "Neutral",
+                      answerCode: "3",
+                      completedAnswer: null,
+                      completedActualAnswer: null,
+                    },
+                    {
+                      answer_ID: "130942",
+                      answerValue: "Somewhat Satisfied",
+                      answerCode: "4",
+                      completedAnswer: null,
+                      completedActualAnswer: null,
+                    },
+                    {
+                      answer_ID: "130941",
+                      answerValue: "Extremely Satisfied",
+                      answerCode: "5",
+                      completedAnswer: null,
+                      completedActualAnswer: null,
+                    },
+                  ],
+                  completedAnswer: null,
+                },
+                {
+                  question_ID: 6439,
+                  questionNumText: "13",
+                  wcQuestionName:
+                    "Based on a scale of 1-5, how likely are you to return?",
+                  questionText:
+                    "Based on a scale of 1-5, how likely are you to return?",
+                  questionType: "MultipleChoice_Ranking",
+                  answers: [
+                    {
+                      answer_ID: "130957",
+                      answerValue: "Extremely Unlikely",
+                      answerCode: "1",
+                      completedAnswer: null,
+                      completedActualAnswer: null,
+                    },
+                    {
+                      answer_ID: "130956",
+                      answerValue: "Somewhat Unlikely",
+                      answerCode: "2",
+                      completedAnswer: null,
+                      completedActualAnswer: null,
+                    },
+                    {
+                      answer_ID: "130955",
+                      answerValue: "Neither Likely nor Unlikely",
+                      answerCode: "3",
+                      completedAnswer: null,
+                      completedActualAnswer: null,
+                    },
+                    {
+                      answer_ID: "130954",
+                      answerValue: "Somewhat Likely",
+                      answerCode: "4",
+                      completedAnswer: null,
+                      completedActualAnswer: null,
+                    },
+                    {
+                      answer_ID: "130953",
+                      answerValue: "Extremely Likely",
+                      answerCode: "5",
+                      completedAnswer: null,
+                      completedActualAnswer: null,
+                    },
+                  ],
+                  completedAnswer: null,
+                },
+                {
+                  question_ID: 6440,
+                  questionNumText: "14",
+                  wcQuestionName:
+                    "Based on a scale of 1-5, how likely are you to recommend White Castle to others?",
+                  questionText:
+                    "Based on a scale of 1-5, how likely are you to recommend White Castle to others?",
+                  questionType: "MultipleChoice_Ranking",
+                  answers: [
+                    {
+                      answer_ID: "130962",
+                      answerValue: "Extremely Unlikely",
+                      answerCode: "1",
+                      completedAnswer: null,
+                      completedActualAnswer: null,
+                    },
+                    {
+                      answer_ID: "130961",
+                      answerValue: "Somewhat Unlikely",
+                      answerCode: "2",
+                      completedAnswer: null,
+                      completedActualAnswer: null,
+                    },
+                    {
+                      answer_ID: "130960",
+                      answerValue: "Neither Likely nor Unlikely",
+                      answerCode: "3",
+                      completedAnswer: null,
+                      completedActualAnswer: null,
+                    },
+                    {
+                      answer_ID: "130959",
+                      answerValue: "Somewhat Likely",
+                      answerCode: "4",
+                      completedAnswer: null,
+                      completedActualAnswer: null,
+                    },
+                    {
+                      answer_ID: "130958",
+                      answerValue: "Extremely Likely",
+                      answerCode: "5",
+                      completedAnswer: null,
+                      completedActualAnswer: null,
+                    },
+                  ],
+                  completedAnswer: null,
+                },
+                {
+                  question_ID: 6441,
+                  questionNumText: "15",
+                  wcQuestionName:
+                    "Based on a scale of 1-5, how satisfied were you with the level of customer service provided by our Team Members?",
+                  questionText:
+                    "Based on a scale of 1-5, how satisfied were you with the level of customer service provided by our Team Members?",
+                  questionType: "MultipleChoice_Ranking",
+                  answers: [
+                    {
+                      answer_ID: "130967",
+                      answerValue: "Extremely Dissatisfied",
+                      answerCode: "1",
+                      completedAnswer: null,
+                      completedActualAnswer: null,
+                    },
+                    {
+                      answer_ID: "130966",
+                      answerValue: "Somewhat Dissatisfied",
+                      answerCode: "2",
+                      completedAnswer: null,
+                      completedActualAnswer: null,
+                    },
+                    {
+                      answer_ID: "130965",
+                      answerValue: "Neutral",
+                      answerCode: "3",
+                      completedAnswer: null,
+                      completedActualAnswer: null,
+                    },
+                    {
+                      answer_ID: "130964",
+                      answerValue: "Somewhat Satisfied",
+                      answerCode: "4",
+                      completedAnswer: null,
+                      completedActualAnswer: null,
+                    },
+                    {
+                      answer_ID: "130963",
+                      answerValue: "Extremely Satisfied",
+                      answerCode: "5",
+                      completedAnswer: null,
+                      completedActualAnswer: null,
+                    },
+                  ],
+                  completedAnswer: null,
+                },
+                {
+                  question_ID: 6442,
+                  questionNumText: "16",
+                  wcQuestionName:
+                    "Based on a scale of 1-5, how knowledgeable were our Team Members of the menu?",
+                  questionText:
+                    "Based on a scale of 1-5, how knowledgeable were our Team Members of the menu?",
+                  questionType: "MultipleChoice_Ranking",
+                  answers: [
+                    {
+                      answer_ID: "130972",
+                      answerValue: "Highly Unknowledgeable",
+                      answerCode: "1",
+                      completedAnswer: null,
+                      completedActualAnswer: null,
+                    },
+                    {
+                      answer_ID: "130971",
+                      answerValue: "Somewhat Unknowledgeable",
+                      answerCode: "2",
+                      completedAnswer: null,
+                      completedActualAnswer: null,
+                    },
+                    {
+                      answer_ID: "130970",
+                      answerValue: "Neither Knowledgeable Nor Unknowledgeable",
+                      answerCode: "3",
+                      completedAnswer: null,
+                      completedActualAnswer: null,
+                    },
+                    {
+                      answer_ID: "130969",
+                      answerValue: "Somewhat Knowledgeable",
+                      answerCode: "4",
+                      completedAnswer: null,
+                      completedActualAnswer: null,
+                    },
+                    {
+                      answer_ID: "130968",
+                      answerValue: "Highly Knowledgeable",
+                      answerCode: "5",
+                      completedAnswer: null,
+                      completedActualAnswer: null,
+                    },
+                  ],
+                  completedAnswer: null,
+                },
+              ],
+              logs: null,
+              language: null,
+              currentPageNumber: 2,
+              selectedPageNumber: 2,
+              lastPageYN: "N",
+            };
+            json =
+              '{ "Question":"' +
+              myRadio.name +
+              '", "Answer": "' +
+              myRadio.value +
+              '"}';
+            console.log(myRadio.question_id);
+            console.log(myRadio.name);
+            console.log(myRadio.value);
+            console.log(myRadio.value);
+            console.log(json);
+            //console.log(json);
+            $.ajax({
+              contentType: "application/json;charset=utf-8",
+              method: "POST",
+              url: "/survey/update",
+              data: json,
+              success: function (data) {
+                console.log("success!");
+              },
+              error: function (data) {
+                console.log("fail");
+              },
+            });
+          }
+
+          function handleChange2(input) {
+            console.log(input.name);
+          }
+        </script>
+      </div>
+      <div id="bottomBar">&nbsp;</div>
+    </div>
+  </body>
+  <footer></footer>
+  <script src="/lib/jquery/dist/jquery.min.js"></script>
+</html>
+
+<!-- <div class="question">
+                Hello, and thank you for craving White Castle!
+              </div>
+              <div class="answerGroup multipleChoice">
+                <form action="#">
+                  <input type="radio" id="test1" name="radio1" />
+                  <label for="test1">For English</label>
+                  <input type="radio" id="test2" name="radio1" />
+                  <label for="test2">Para Espanol</label>
+                </form>
+              </div> -->
