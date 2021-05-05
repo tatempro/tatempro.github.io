@@ -60,7 +60,7 @@ body {
     display: flex;
     flex-direction: column;
     background-color: lightpink;
-    width: 80%;
+    width: 90%;
 }
 
 #buttonContainer {
@@ -75,9 +75,14 @@ body {
     background-color: lightpink;
 }
 
+.questionAndAnswerContainer {
+    background-color: lightgrey;
+    margin: 10px;
+}
+
 @media only screen and (min-width: 1008px) {
     #header {
-        height: 90px;
+        height: 80px;
     }
 
     #contentContainer {
