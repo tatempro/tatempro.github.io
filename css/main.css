@@ -56,7 +56,7 @@ body {
   );
 }
 
-#questionContainer {
+#contentContainer {
     display: flex;
     background-color: lightpink;
     width: 80%;
@@ -64,7 +64,7 @@ body {
 
 @media only screen and (min-width: 1008px) {
     #header {
-        height: 80px;
+        height: 90px;
     }
 
     #questionContainer {
