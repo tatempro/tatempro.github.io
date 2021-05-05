@@ -17,17 +17,17 @@
 #header {
   display: flex;
   height: 80px;
-  background-color: RGB(0, 96, 168);
+  background-color: RGB(66, 102, 160);
   background-image: linear-gradient(
     to right,
-    RGB(0, 96, 168),
-    RGB(20, 116, 188)
+    RGB(66, 102, 160),
+    RGB(83, 118, 174)
   );
+  padding: 10px 0px;
 }
 
 #content {
   display: flex;
-  height: 100%;
   flex-grow: 1;
   flex-direction: row;
   justify-content: center;
