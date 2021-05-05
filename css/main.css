@@ -59,7 +59,6 @@ body {
 #contentContainer {
     display: flex;
     flex-direction: column;
-    background-color: lightpink;
     width: 90%;
 }
 
@@ -72,12 +71,25 @@ body {
 }
 
 #surveyContainer {
-    background-color: lightpink;
+    border: 1px solid black;
+    margin: 10px 0px;
 }
 
 .questionAndAnswerContainer {
     background-color: lightgrey;
     margin: 10px;
+}
+
+.question {
+    font-weight: bold;
+}
+
+.answer {
+
+}
+
+.openEnded {
+
 }
 
 @media only screen and (min-width: 1008px) {
