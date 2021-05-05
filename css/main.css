@@ -89,6 +89,12 @@ body {
     margin-bottom: 10px;
 }
 
+.answer input[type="number"], input[type="date"] {
+    max-width: 50%;
+}
+
+
+
 .openEnded {
 
 }
@@ -104,7 +110,6 @@ body {
     display: flex;
     margin: 10px 30px;
     padding: 10px 30px;
-    width: 50%;
     min-width: 150px;
     border: 1px solid RGB(200, 200, 200);
 }
