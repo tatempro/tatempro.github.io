@@ -55,8 +55,14 @@
 #questionContainer {
     display: flex;
     background-color: lightpink;
-    width: 800px;
+    width: 80%;
 }
+
+@media only screen and (max-width: 600px) {
+    #questionContainer {
+        background-color: lightblue;
+    }
+  }
 
 
 /* 
