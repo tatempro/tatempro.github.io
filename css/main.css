@@ -89,9 +89,7 @@ body {
     margin-bottom: 10px;
 }
 
-.answer input[type="number"], input[type="date"] {
-    max-width: 50%;
-}
+
 
 
 
@@ -133,6 +131,10 @@ body {
 
     #contentContainer {
         max-width: 1000px;
+    }
+
+    .answer input[type="number"], input[type="date"] {
+        max-width: 50%;
     }
   }
 
