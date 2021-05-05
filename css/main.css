@@ -25,8 +25,13 @@
   );
 }
 
+#headerImageContainer {
+    width: 100%;
+    text-align: center;
+}
+
 #headerImageContainer img {
-    height: 90px;
+    height: 90%;
 }
 
 #content {
