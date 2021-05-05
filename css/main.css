@@ -58,9 +58,10 @@
     width: 80%;
 }
 
-@media only screen and (max-width: 600px) {
+@media only screen and (min-width: 1008px) {
     #questionContainer {
         background-color: lightblue;
+        max-width: 1000px;
     }
   }
 
