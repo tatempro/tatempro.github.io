@@ -80,7 +80,7 @@ body {
         height: 90px;
     }
 
-    #questionContainer {
+    #contentContainer {
         background-color: lightblue;
         max-width: 1000px;
     }
