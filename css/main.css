@@ -5,17 +5,19 @@
 }
 
 #topBar {
-    background: yellowgreen;
+    
 }
 
 @media (min-width: 750px) {
     #topBar {
+        background: yellowgreen;
         height: 50px;
     }
 }
 
 @media (min-width: 1000px) {
     #topBar {
+        background: green;
         height: 100px;
     }
 }
