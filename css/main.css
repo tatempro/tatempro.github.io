@@ -137,8 +137,8 @@ body {
         .ranking label {
             padding: 10px 30px;
             border: 1px solid RGB(200, 200, 200);
-            flex-basis: 15%;
             text-align: center;
+            width: 100%;
         }
     
         .ranking input[type="radio"] {
@@ -150,6 +150,11 @@ body {
             .ranking input[type="radio"]:checked + label {
                 background-color: RGB(236, 240, 246);
                 border-color: RGB(2, 72, 196);
+            }
+
+            .padding-0{
+                padding-right:0;
+                padding-left:0;
             }
 
 @media only screen and (min-width: 1008px) {
