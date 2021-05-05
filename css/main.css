@@ -20,18 +20,23 @@ body {
 
 #header {
   display: flex;
-  height: 10%;
-  background-color: RGB(66, 102, 160);
-  background-image: linear-gradient(
-    to right,
-    RGB(66, 102, 160),
-    RGB(83, 118, 174)
-  );
+  height: 80px;
+  flex-direction: column;
+  position: fixed;
+  top: 0px;
+  width: 100%;
+  background-color: lightpink;
 }
 
 #headerImageContainer {
     width: 100%;
     text-align: center;
+    background-color: RGB(66, 102, 160);
+    background-image: linear-gradient(
+      to right,
+      RGB(66, 102, 160),
+      RGB(83, 118, 174)
+    );
 }
 
 #headerImageContainer img {
@@ -43,6 +48,7 @@ body {
   flex-grow: 1;
   flex-direction: row;
   justify-content: center;
+  margin-top: 80px;
 }
 
 #footer {
