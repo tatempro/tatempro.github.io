@@ -137,6 +137,7 @@ body {
         .ranking label {
             padding: 10px 0px;
             border: 1px solid RGB(200, 200, 200);
+            flex-basis: 20%;
             text-align: center;
             width: 100%;
         }
