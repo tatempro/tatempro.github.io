@@ -11,7 +11,7 @@
   background-image: linear-gradient(RGB(228, 228, 228), RGB(248, 248, 248));
   display: flex;
   flex-direction: column;
-  min-height: 100vh;
+  height: 100vh;
 }
 
 #header {
