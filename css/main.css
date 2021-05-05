@@ -1,3 +1,7 @@
+body {
+    background-color: RGB(66, 102, 160);
+}
+
 * {
   border: 0;
   padding: 0;
@@ -55,7 +59,7 @@
 #questionContainer {
     display: flex;
     background-color: lightpink;
-    width: 80%;
+    width: 40%;
 }
 
 @media only screen and (min-width: 1008px) {
