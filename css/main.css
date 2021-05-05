@@ -20,7 +20,7 @@ body {
 
 #header {
   display: flex;
-  height: 80px;
+  height: 10%;
   background-color: RGB(66, 102, 160);
   background-image: linear-gradient(
     to right,
@@ -63,6 +63,10 @@ body {
 }
 
 @media only screen and (min-width: 1008px) {
+    #header {
+        height: 80px;
+    }
+
     #questionContainer {
         background-color: lightblue;
         max-width: 1000px;
