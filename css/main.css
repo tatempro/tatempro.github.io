@@ -23,8 +23,10 @@
     RGB(66, 102, 160),
     RGB(83, 118, 174)
   );
-  padding: 10px 0px;
-  
+}
+
+#headerImageContainer img {
+    height: 90%;
 }
 
 #content {
