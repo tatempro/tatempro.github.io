@@ -58,8 +58,21 @@ body {
 
 #contentContainer {
     display: flex;
+    flex-direction: column;
     background-color: lightpink;
     width: 80%;
+}
+
+#buttonContainer {
+    background-color: lightyellow;
+}
+
+#progressBarContainer {
+    background-color: lightgreen;
+}
+
+#surveyContainer {
+    background-color: lightpink;
 }
 
 @media only screen and (min-width: 1008px) {
