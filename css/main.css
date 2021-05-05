@@ -59,7 +59,7 @@ body {
 #questionContainer {
     display: flex;
     background-color: lightpink;
-    width: 40%;
+    width: 80%;
 }
 
 @media only screen and (min-width: 1008px) {
