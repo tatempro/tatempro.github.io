@@ -15,7 +15,6 @@ body {
   background-image: linear-gradient(RGB(228, 228, 228), RGB(248, 248, 248));
   display: flex;
   flex-direction: column;
-  height: 100vh;
 }
 
 #header {
@@ -129,6 +128,29 @@ body {
         background-color: RGB(236, 240, 246);
         border-color: RGB(2, 72, 196);
     }
+
+    .ranking {
+        display: flex;
+        justify-content: center;
+    }
+    
+        .ranking label {
+            padding: 10px 30px;
+            border: 1px solid RGB(200, 200, 200);
+            flex-basis: 20%;
+            text-align: center;
+        }
+    
+        .ranking input[type="radio"] {
+            opacity: 0;
+            position: fixed;
+            width: 0;
+        }
+    
+            .ranking input[type="radio"]:checked + label {
+                background-color: RGB(236, 240, 246);
+                border-color: RGB(2, 72, 196);
+            }
 
 @media only screen and (min-width: 1008px) {
     #header {
