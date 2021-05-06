@@ -61,6 +61,7 @@ Header
     order: 2;
     align-items: center;
     justify-content: center;
+    background-color: RGB(228, 228, 228);
 }
 
     #progressBarBackground {
