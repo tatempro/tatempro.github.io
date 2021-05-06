@@ -1,8 +1,8 @@
 /**************************************************
-Main Items
+General Items
 ***************************************************/
 body {
-    background-color: RGB(66, 102, 160);
+    background-color: red;
 }
 
 * {
@@ -13,9 +13,6 @@ body {
   font-family: "Lucida Sans", "Helvetica", "Arial", "sans-serif";
 }
 
-/**************************************************
-Structure
-***************************************************/
 #screen {
   background-color: RGB(248, 248, 248);
   background-image: linear-gradient(RGB(228, 228, 228), RGB(248, 248, 248));
@@ -23,6 +20,9 @@ Structure
   flex-direction: column;
 }
 
+/**************************************************
+Header
+***************************************************/
 #header {
   display: flex;
   height: 80px;
@@ -33,22 +33,25 @@ Structure
   background-color: lightpink;
 }
 
-#headerImageContainer {
-    width: 100%;
-    height: 100%;
-    text-align: center;
-    background-color: RGB(66, 102, 160);
-    background-image: linear-gradient(
-      to right,
-      RGB(66, 102, 160),
-      RGB(83, 118, 174)
-    );
-}
+    #headerImageContainer {
+        width: 100%;
+        height: 100%;
+        text-align: center;
+        background-color: RGB(66, 102, 160);
+        background-image: linear-gradient(
+        to right,
+        RGB(66, 102, 160),
+        RGB(83, 118, 174)
+        );
+    }
 
-#headerImageContainer img {
-    height: 90%;
-}
+        #headerImageContainer img {
+            height: 90%;
+        }
 
+/**************************************************
+Main Content
+***************************************************/
 #content {
   display: flex;
   flex-grow: 1;
@@ -57,34 +60,19 @@ Structure
   margin-top: 80px;
 }
 
-#footer {
-  display: flex;
-  height: 60px;
-  background-color: RGB(242, 105, 36);
-  background-image: linear-gradient(
-    to right,
-    RGB(242, 105, 36),
-    RGB(255, 125, 56)
-  );
-}
+    #contentContainer {
+        display: flex;
+        flex-direction: column;
+        width: 90%;
+    }
 
-#contentContainer {
-    display: flex;
-    flex-direction: column;
-    width: 90%;
-}
-
-#buttonContainer {
-    background-color: lightyellow;
-}
-
+/**************************************************
+Progress Bar
+***************************************************/
 #progressBarContainer {
     background-color: lightgreen;
 }
 
-/************************************************************************
-    Progress Bar
-************************************************************************/
 #progressBarBackground {
     min-width: 400px;
     width: 40%;
@@ -103,6 +91,13 @@ Structure
     background-image: linear-gradient( to right, RGB(242, 105, 36), RGB(255, 125, 56) );
     border-radius: 10px;
     min-width: 20px;
+}
+
+/**************************************************
+Bottom Buttons (Next, etc.)
+***************************************************/
+#buttonContainer {
+    background-color: lightyellow;
 }
 
 #surveyContainer {
