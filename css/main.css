@@ -1,3 +1,6 @@
+/**************************************************
+Main Items
+***************************************************/
 body {
     background-color: RGB(66, 102, 160);
 }
@@ -10,6 +13,9 @@ body {
   font-family: "Lucida Sans", "Helvetica", "Arial", "sans-serif";
 }
 
+/**************************************************
+Structure
+***************************************************/
 #screen {
   background-color: RGB(248, 248, 248);
   background-image: linear-gradient(RGB(228, 228, 228), RGB(248, 248, 248));
