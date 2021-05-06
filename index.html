@@ -12,11 +12,28 @@
   <body>
     <div id="screen">
       <div id="header">
-        <div id="headerImageContainer">Test 90%</div>
-        <div id="progressBarContainer">Progress Bar</div>
+        <div id="headerImageContainer">
+          <picture>
+            <img src="img/wc_logo_svg_2.svg">
+          </picture>
+        </div>
+      </div>
+      <div id="progressBarContainer">
+        <div id="progressContainer">
+          <div id="progressBarBackground">
+            <div id="progressBar" style="width: 20%">&nbsp;</div>
+          </div>
+        </div>
       </div>
       <div id="content">
         <div id="contentContainer">
+          <div id="progressBarContainer">
+            <div id="progressContainer">
+              <div id="progressBarBackground">
+                <div id="progressBar" style="width: 20%">&nbsp;</div>
+              </div>
+            </div>
+          </div>
           <div id="surveyContainer">
             <div class="questionAndAnswerContainer">
               <div class="question">
@@ -24,42 +41,63 @@
               </div>
               <div class="answer">
                 <input
-                      type="number"
-                      id="Questions_0__CompletedAnswer"
-                      class="form-control"
-                      name="Questions[0].CompletedAnswer"
-                      value=""
-                    />
+                  type="number"
+                  id="Questions_0__CompletedAnswer"
+                  class="form-control"
+                  name="Questions[0].CompletedAnswer"
+                  value=""
+                />
               </div>
             </div>
             <div class="questionAndAnswerContainer">
-              <div class="question">
-                What date did you visit the Castle?
-              </div>
+              <div class="question">What date did you visit the Castle?</div>
               <div class="answer">
                 <input
-                      type="date"
-                      id="Questions_0__CompletedAnswer"
-                      class="form-control"
-                      name="Questions[0].CompletedAnswer"
-                      value=""
-                    />
+                  type="date"
+                  id="Questions_0__CompletedAnswer"
+                  class="form-control"
+                  name="Questions[0].CompletedAnswer"
+                  value=""
+                />
               </div>
             </div>
             <div class="questionAndAnswerContainer">
-              <div class="question">
-                How often do you visit White Castle?
-              </div>
+              <div class="question">How often do you visit White Castle?</div>
               <div class="answer multipleChoice">
-                <input id="radio_3_0" type="radio" value="More than 2 times a week" name="Questions[3].CompletedAnswer" />
+                <input
+                  id="radio_3_0"
+                  type="radio"
+                  value="More than 2 times a week"
+                  name="Questions[3].CompletedAnswer"
+                />
                 <label for="radio_3_0">More than 2 times a week</label>
-                <input id="radio_3_1" type="radio" value="1-2 times a week" name="Questions[3].CompletedAnswer" />
+                <input
+                  id="radio_3_1"
+                  type="radio"
+                  value="1-2 times a week"
+                  name="Questions[3].CompletedAnswer"
+                />
                 <label for="radio_3_1">1-2 times a week</label>
-                <input id="radio_3_2" type="radio" value="1-2 times a month" name="Questions[3].CompletedAnswer" />
+                <input
+                  id="radio_3_2"
+                  type="radio"
+                  value="1-2 times a month"
+                  name="Questions[3].CompletedAnswer"
+                />
                 <label for="radio_3_2">1-2 times a month</label>
-                <input id="radio_3_3" type="radio" value="Less than once a month" name="Questions[3].CompletedAnswer" />
+                <input
+                  id="radio_3_3"
+                  type="radio"
+                  value="Less than once a month"
+                  name="Questions[3].CompletedAnswer"
+                />
                 <label for="radio_3_3">Less than once a month</label>
-                <input id="radio_3_4" type="radio" value="This is my first visit" name="Questions[3].CompletedAnswer" />
+                <input
+                  id="radio_3_4"
+                  type="radio"
+                  value="This is my first visit"
+                  name="Questions[3].CompletedAnswer"
+                />
                 <label for="radio_3_4">This is my first visit</label>
               </div>
             </div>
@@ -72,15 +110,40 @@
                 <div class="col text-right">Very Likely</div>
               </div>
               <div class="answer ranking">
-                <input id="radio_3_0" type="radio" value="More than 2 times a week" name="Questions[3].CompletedAnswer" />
+                <input
+                  id="radio_3_0"
+                  type="radio"
+                  value="More than 2 times a week"
+                  name="Questions[3].CompletedAnswer"
+                />
                 <label for="radio_3_0">1</label>
-                <input id="radio_3_1" type="radio" value="1-2 times a week" name="Questions[3].CompletedAnswer" />
+                <input
+                  id="radio_3_1"
+                  type="radio"
+                  value="1-2 times a week"
+                  name="Questions[3].CompletedAnswer"
+                />
                 <label for="radio_3_1">2</label>
-                <input id="radio_3_2" type="radio" value="1-2 times a month" name="Questions[3].CompletedAnswer" />
+                <input
+                  id="radio_3_2"
+                  type="radio"
+                  value="1-2 times a month"
+                  name="Questions[3].CompletedAnswer"
+                />
                 <label for="radio_3_2">3</label>
-                <input id="radio_3_3" type="radio" value="Less than once a month" name="Questions[3].CompletedAnswer" />
+                <input
+                  id="radio_3_3"
+                  type="radio"
+                  value="Less than once a month"
+                  name="Questions[3].CompletedAnswer"
+                />
                 <label for="radio_3_3">4</label>
-                <input id="radio_3_4" type="radio" value="This is my first visit" name="Questions[3].CompletedAnswer" />
+                <input
+                  id="radio_3_4"
+                  type="radio"
+                  value="This is my first visit"
+                  name="Questions[3].CompletedAnswer"
+                />
                 <label for="radio_3_4">5</label>
               </div>
             </div>
