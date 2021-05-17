@@ -22,11 +22,17 @@ function setCurrentQuestionAnswered(item) {
 }
 
 function handleChange(item) {
-    let surveyContainer = document.getElementById("surveyContainer");
-    let question = item.parentNode.parentNode;
-    invalidQuestion_removeInvalid(surveyContainer, question);
-    submitAnswer(item);
-    scrollToNextQuestion(item);
+    try {
+        let surveyContainer = document.getElementById("surveyContainer");
+        let question = item.parentNode.parentNode;
+        invalidQuestion_removeInvalid(surveyContainer, question);
+        submitAnswer(item);
+        scrollToNextQuestion(item);
+    }
+    
+    catch (e) {
+        alert(e);
+    }
 }
 
 function submitAnswer(item) {
