@@ -1,8 +1,8 @@
-/**************************************************
+﻿/**************************************************
 General Items
 ***************************************************/
-body {
-    background-color: red;
+html {
+    background-color: RGB(248, 248, 248);
 }
 
 * {
@@ -15,7 +15,7 @@ body {
 
 #screen {
   background-color: RGB(248, 248, 248);
-  background-image: linear-gradient(RGB(228, 228, 228), RGB(248, 248, 248));
+  /*background-image: linear-gradient(RGB(228, 228, 228), RGB(248, 248, 248));*/
   display: flex;
   flex-direction: column;
 }
@@ -29,13 +29,14 @@ body {
 Header
 ***************************************************/
 #header {
-  display: flex;
-  height: 80px;
-  flex-direction: column;
-  position: fixed;
-  top: 0px;
-  width: 100%;
-  background-color: lightpink;
+    display: flex;
+    height: 80px;
+    flex-direction: column;
+    position: fixed;
+    top: 0px;
+    width: 100%;
+    background-color: lightpink;
+    z-index: 10000;
 }
 
     #headerImageContainer {
@@ -61,7 +62,7 @@ Header
     order: 2;
     align-items: center;
     justify-content: center;
-    background-color: RGB(228, 228, 228);
+    background-color: RGB(248, 248, 248);
 }
 
     #progressBarBackground {
@@ -92,7 +93,7 @@ Main Content
   flex-grow: 1;
   flex-direction: row;
   justify-content: center;
-  margin-top: 110px;
+  margin-top: 130px;
 }
 
     #contentContainer {
@@ -108,20 +109,47 @@ Bottom Buttons (Next, etc.)
 #buttonContainer {
     display: flex;
     justify-content: center;
+    flex-direction: row-reverse;
 }
 
-#buttonContainer img {
+.pageButton, .pageButton img {
+    width: 50px;
     height: 50px;
-    margin: 10px;
+    border-radius: 50px;
+    border: none;
 }
 
+.pageButton {
+    position: relative;
+    background-color: rgb(255,255,255);
+    margin: 0 10px;
+}
+
+    .pageButton, .pageButton img:hover {
+        cursor: default;
+        background-color: rgb(200,200,200);
+    }
+
+    .pageButton img {
+        position: absolute;
+        top: 0;
+        left: 0;
+    }
+
+button:focus {
+    outline: none;
+}
 
 /**************************************************
 Main Survey Items
 ***************************************************/
 #surveyContainer {
-    border: 1px solid black;
+    /*border: 1px solid black;*/
+    background-color: RGB(248, 248, 248);
     margin: 10px 0px;
+    overflow-y: auto;
+    overflow-x: hidden;
+    height: calc(100vh - 200px);
 }
 
 .questionAndAnswerContainer {
@@ -189,7 +217,49 @@ Main Survey Items
                 border-color: RGB(2, 72, 196);
             }
 
+/**************************************************
+Error
+***************************************************/
+#errorContainer {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    flex-direction: column;
+}
 
+/**************************************************
+Extra Stuff
+***************************************************/
+input::-webkit-outer-spin-button,
+input::-webkit-inner-spin-button {
+    /* display: none; <- Crashes Chrome on hover */
+    -webkit-appearance: none;
+    margin: 0; /* <-- Apparently some margin are still there even though it's hidden */
+}
+
+input[type=number] {
+    -moz-appearance: textfield; /* Firefox */
+}
+
+/**************************************************
+Validation
+***************************************************/
+.invalid {
+    color: red;
+    background-color: #ffe8e8;
+    border-radius: 5px;
+    margin-bottom: 5px;
+}
+
+    .invalid input[type="number"] {
+        border-color: red;
+        background-color: #ffe8e8;
+    }
+
+.validationMessage {
+    color: red;
+    font-size: 0.75em;
+}
 /**************************************************
 Media Queries
 ***************************************************/
@@ -211,16 +281,342 @@ Media Queries
     }
   }
 
-/**************************************************
-Extra Stuff
-***************************************************/
-input::-webkit-outer-spin-button,
-input::-webkit-inner-spin-button {
-    /* display: none; <- Crashes Chrome on hover */
-    -webkit-appearance: none;
-    margin: 0; /* <-- Apparently some margin are still there even though it's hidden */
+
+
+/************************************************************************
+    General Adjustments
+************************************************************************/
+/** {
+    margin: 0;
+    padding: 0;
+    font-family: Calibri, Arial, Helvetica, sans-serif;
 }
 
-input[type=number] {
-    -moz-appearance:textfield; /* Firefox */
+html {
+    height: 100%;
+    background-color: RGB(248, 248, 248);
 }
+
+body {
+    height: 100%;
+    background-color: RGB(248, 248, 248);
+}*/
+
+/************************************************************************
+    Main Body Structure
+************************************************************************/
+/*#screen {
+    height: 100%;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    background-color: RGB(248, 248, 248);
+    background-image: linear-gradient(RGB(228, 228, 228), RGB(248, 248, 248));
+}*/
+
+/* Top Bar **************************/
+/*#topBar {
+    order: 1;
+    display: flex;
+    height: 88px;
+    align-items: center;
+    padding: 0px 40px;
+    background-color: RGB(0, 96, 168);
+    background-image: linear-gradient( to right, RGB(0, 96, 168), RGB(20, 116, 188) );
+}
+
+    #topBar img {
+        order: 1;
+        height: 62px;
+    }
+
+@media (max-width: 600px) {
+    #topBar {
+        height: 59px;
+    }
+}
+
+#content {
+    order: 2;
+    display: flex;
+    flex-grow: 1;
+    flex-direction: column;
+    min-height: 200px;
+}*/
+
+/* Bottom Bar **************************/
+/*#bottomBar {
+    order: 3;
+    display: flex;
+    height: 134px;
+    background-color: RGB(242, 105, 36);
+    background-image: linear-gradient( to right, RGB(242, 105, 36), RGB(255, 125, 56) );
+}
+
+@media (max-width: 600px) {
+    #bottomBar {
+        height: 45px;
+    }
+}*/
+
+/************************************************************************
+    Structure inside #content Div
+************************************************************************/
+/*#progressContainer {
+    order: 1;
+    display: flex;
+    justify-content: center;
+    background-color: RGB(248, 248, 248);
+    background-image: linear-gradient(RGB(228, 228, 228), RGB(248, 248, 248));
+    margin-bottom: 10px;
+}
+
+#messageContainer {
+    order: 2;
+    display: flex;
+    justify-content: center;
+    margin-bottom: 10px 0;
+}
+
+#formContainer {
+    order: 3;
+    display: flex;
+    justify-content: center;
+    margin-bottom: 10px;
+    overflow: auto;
+}
+
+#questionContainer {
+    order: 4;
+    display: flex;
+    justify-content: center;
+    overflow: auto;
+    max-height: calc(100% - 2em - 20px);
+}
+
+#buttonContainer {
+    order: 5;
+    display: flex;
+    justify-content: center;
+    margin-bottom: 10px;
+}*/
+
+
+
+/************************************************************************
+    Progress Bar
+************************************************************************/
+/*#progressBarBackground {
+    min-width: 400px;
+    width: 40%;
+    height: 20px;
+    padding: 1px 2px;
+    margin: 10px 0px;
+    text-align: center;
+    border-radius: 12px;
+    border: 1px solid RGB(200, 200, 200);
+    background-color: RGB(248, 248, 248);
+}
+
+#progressBar {
+    margin-top: 1px;
+    background-color: RGB(242, 105, 36);
+    background-image: linear-gradient( to right, RGB(242, 105, 36), RGB(255, 125, 56) );
+    border-radius: 10px;
+    min-width: 20px;
+}*/
+
+/************************************************************************
+    Questions
+************************************************************************/
+/*#questionGroup {
+    display: flex;
+    min-width: 800px;
+    width: 60%;
+    padding: 10px 30px;
+    margin: 10px 0px;
+    background-color: RGB(248, 248, 248);
+    border: 1px solid RGB(200, 200, 200);
+    overflow: auto;
+    flex-direction: column;
+}
+
+.question {
+    font-size: 1.25em;
+    margin-bottom: 10px;
+}
+
+.questionAndAnswer {
+    display: flex;
+    flex-direction: column;
+    border-bottom: 1px solid RGB(100, 100, 100);
+    padding-bottom: 25px;
+    margin-bottom: 25px;
+}*/
+
+/************************************************************************
+    Answers
+************************************************************************/
+/*.answer {
+    font-size: 1.1em;
+    -ms-user-select: none;
+    user-select: none;
+}*/
+
+/* Multiple Choice **************************/
+/*.multipleChoice {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: space-between;
+    flex-direction: column;
+}
+
+    .multipleChoice label {
+        display: flex;
+        margin: 10px 30px;
+        padding: 10px 30px;
+        width: 50%;
+        min-width: 150px;
+        border: 1px solid RGB(200, 200, 200);
+    }
+
+    .multipleChoice input[type="radio"] {
+        opacity: 0;
+        position: fixed;
+        width: 0;
+    }
+
+        .multipleChoice input[type="radio"]:checked + label {
+            display: flex;
+            background-color: RGB(236, 240, 246);
+            border-color: RGB(2, 72, 196);
+        }*/
+
+/* Ranking (Similar to mult-choice) **************************/
+/*.ranking {
+    display: flex;
+    justify-content: center;
+}
+
+    .ranking label {
+        padding: 10px 30px;
+        border: 1px solid RGB(200, 200, 200);
+        flex-basis: 20%;
+        text-align: center;
+    }
+
+    .ranking input[type="radio"] {
+        opacity: 0;
+        position: fixed;
+        width: 0;
+    }
+
+        .ranking input[type="radio"]:checked + label {
+            background-color: RGB(236, 240, 246);
+            border-color: RGB(2, 72, 196);
+        }*/
+
+/* Mass Ranking **************************/
+/*.massRanking {
+    padding: 10px;
+    margin: 10px;
+    border: 1px solid RGB(200, 200, 200);
+}
+
+.massRankingItem {
+    font-size: 1em;
+}
+
+.massRankingSelectionList {
+    display: flex;
+    margin-bottom: 10px;
+}
+
+    .massRankingSelectionList label {
+        padding: 10px 10px;
+        border: 1px solid RGB(200, 200, 200);
+        flex-basis: 10%;
+        text-align: center;
+    }
+
+    .massRankingSelectionList input[type="radio"] {
+        opacity: 0;
+        position: fixed;
+        width: 0;
+    }
+
+        .massRankingSelectionList input[type="radio"]:checked + label {
+            background-color: RGB(236, 240, 246);
+            border-color: RGB(2, 72, 196);
+        }*/
+
+/* Mass Ranking **************************/
+/*.userInput {
+}
+
+    .userInput input[type="text"] {
+        padding-left: 5px;
+        border: 1px solid RGB(200, 200, 200);
+        border-radius: 5px;
+        font-size: 1em;
+    }*/
+
+/************************************************************************
+    Buttons (Next / Previous)
+************************************************************************/
+/*.button {
+    font-size: 2em;
+    border: 2px solid RGB(2, 72, 196);
+    color: RGB(2, 72, 196);
+    background-color: RGB(248, 248, 248);
+    border-radius: 100%;
+    padding: 0 10px;
+    margin: 0px 10px;
+}*/
+
+  /*  .button a {
+        text-decoration: none;
+        border-radius: 100%;
+        background-color: RGB(248, 248, 248);
+        padding: 0px 10px;
+        color: RGB(2, 72, 196);
+    }
+
+        .button a:hover {
+            background-color: RGB(250, 243, 222);
+        }*/
+
+/************************************************************************
+    Misc.
+************************************************************************/
+/*.separated {
+    display: flex;
+    justify-content: space-between;
+}
+
+.bb-grey {
+    border-bottom: 1px solid RGB(200, 200, 200);
+}
+
+.mb-2 {
+    margin-bottom: 2px;
+}
+
+.buttonTest, .buttonTest img {
+    width: 50px;
+    height: 50px;
+    border-radius: 50px;
+    border: none;
+}
+
+.buttonTest {
+    position: relative;
+    background-color: rgb(255,255,255);
+    margin: 0 10px;
+}
+
+    .buttonTest img {
+        position: absolute;
+        top: 0;
+        left: 0;
+    }*/
