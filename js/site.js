@@ -96,21 +96,32 @@ function scrollToNextQuestion(item) {
     }
 }
 
-function handleScroll(item) {
-    let surveyContainer = document.getElementById("surveyContainer");
-    let questionAndAnswer = item.parentNode.parentNode;
-    let thisAnwserIndex;
-    let nextAnswerIndex;
-    thisAnswerIndex = getQuestionIndex(
-        surveyContainer,
-        questionAndAnswer
-    );
-    nextAnswerIndex = thisAnswerIndex + 1;
+function badFunctionSpeling() {
+    console.log("hello");
+}
 
-    let numberOfQuestions = getNumberOfQuestionsOnPage(surveyContainer);
-    let scrollToQuestionDiv = surveyContainer.children[nextAnswerIndex];
-    if (nextAnswerIndex < numberOfQuestions) {
-        scrollToQuestion(surveyContainer, scrollToQuestionDiv);
+function handleScroll(item) {
+    try {        
+        badFunctionSpelling();
+        let surveyContainer = document.getElementById("surveyContainer");
+        let questionAndAnswer = item.parentNode.parentNode;
+        let thisAnwserIndex;
+        let nextAnswerIndex;
+        thisAnswerIndex = getQuestionIndex(
+            surveyContainer,
+            questionAndAnswer
+        );
+        nextAnswerIndex = thisAnswerIndex + 1;
+
+        let numberOfQuestions = getNumberOfQuestionsOnPage(surveyContainer);
+        let scrollToQuestionDiv = surveyContainer.children[nextAnswerIndex];
+        if (nextAnswerIndex < numberOfQuestions) {
+            scrollToQuestion(surveyContainer, scrollToQuestionDiv);
+        }
+    }
+    catch (e)
+    {
+        alert(e);
     }
 }
 
@@ -150,7 +161,6 @@ function scrollToQuestion(div, toItem) {
             return;
         }
 
-        console.log(div);
         lastRunningTop = runningTop;
         div.scrollTop = runningTop;
     }, 20);
