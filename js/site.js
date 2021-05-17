@@ -102,7 +102,7 @@ function badFunctionSpeling() {
 
 function handleScroll(item) {
     try {        
-        badFunctionSpelling();
+        //badFunctionSpelling();
         let surveyContainer = document.getElementById("surveyContainer");
         let questionAndAnswer = item.parentNode.parentNode;
         let thisAnwserIndex;
